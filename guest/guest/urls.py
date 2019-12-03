@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 # from django.urls import path
 from django.conf.urls import url
-from sign import views #导入sign应用views文件
+from guest.sign import views #导入sign应用views文件
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
