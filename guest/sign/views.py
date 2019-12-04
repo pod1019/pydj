@@ -21,8 +21,9 @@ def login_action(request):
 
         # if username =='admin' and password == 'admin123':
             # return HttpResponse('login success!')
+
         if user is not None:
-            auth.login(request.user) #登录  (3.3.2 引用 Django 认证登录)
+            auth.login(request, user) #登录  (3.3.2 引用 Django 认证登录)
             # response.set_cookie('user',username,3600) #添加浏览器cookies（3.2.1节）
             request.session['user'] = username #将session信息记录到浏览器（3.2.2）
             response = HttpResponseRedirect('/event_manage/')
@@ -30,6 +31,8 @@ def login_action(request):
 
         else:
             return render(request,'index.html',{'error':'username or password error！'})
+    # else:
+    #     return render(request,'index.html',{'error':'username or password error!'})
 
 # 发布会管理
 @login_required #如果想限制某个视图函数必须登录才能访问,只需要在这个函数的前面加上@login_required 即可
